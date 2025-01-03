@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TypeRivals</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+    <!-- navbar css -->
+    <style>
+        .navbar {
+            width: 100%;
+            font-size: 1rem;
+            border-radius: 0px;
+        }
+
+        .navfont {
+            font-family: 'Ubuntu', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 25px;
+        }
+
+        .container-fluid {
+            /*height: 52px;*/
+            /*grid-template-columns: repeat(auto-fit, minmax(2px,1fr));*/
+            font-size: 1rem;
+        }
+
+        #but1 {
+            border-radius: 25px;
+            z-index: 100;
+            height: 36px;
+            text-align: center center;
+            font-size: 15px;
+            font-family: 'Ubuntu', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        #but2 {
+            border-radius: 25px;
+            margin-left: -40px;
+            margin-right: 4px;
+            height: 36px;
+            text-align: center center;
+            font-size: 15px;
+            font-family: 'Ubuntu', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        #but2:hover {
+            background-color: rgb(104, 87, 87);
+        }
+    </style>
+    <!-- logout style -->
+    <style>
+        .logout {
+            border-radius: 10px;
+        }
+    </style>
+    <!-- return to top -->
+    <style>
+        #myBtn {
+            /*width: 120px;*/
+            /*height: 50px;*/
+            display: none;
+            position: fixed;
+            bottom: 50px;
+            right: 30px;
+            z-index: 100;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: rgb(56, 50, 50);
+            color: white;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+        }
+
+        #myBtn:hover {
+            background-color: #555;
+
+        }
+    </style>
+    <!-- error and success message -->
+    <style>
+        #message {
+            display: none;
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2000;
+            padding: 15px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            text-align: center;
+        }
+
+        #message.success {
+            background-color: #4caf50;
+            border: 1px solid #388e3c;
+        }
+
+        #message.error {
+            background-color: #f44336;
+            border: 1px solid #d32f2f;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-toggler navbar-collapse navbar-expand-sm navbar-expand-md navbar-expand-lg sticky-top bg-body-tertiary"
+        data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand navfont" href="#">TypeRivals</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mx-5 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/signuphome.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/startcontest.html">Start Contest</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="signedleader.html">Leaderboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signedblog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/signedcontactus.html">Contact Us</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mx-1 mb-lg-0">
+                    <li class="nav-item mx-2">
+                        <button class="btn btn-outline-secondary" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" title="Profile"><svg
+                                xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"
+                                fill="#e8eaed">
+                                <path
+                                    d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm246-164q-59 0-99.5-40.5T340-580q0-59 40.5-99.5T480-720q59 0 99.5 40.5T620-580q0 59-40.5 99.5T480-440Zm0 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q53 0 100-15.5t86-44.5q-39-29-86-44.5T480-280q-53 0-100 15.5T294-220q39 29 86 44.5T480-160Zm0-360q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm0-60Zm0 360Z" />
+                            </svg></button>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" title="Theme">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px"
+                                fill="#e8eaed">
+                                <path
+                                    d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm26.67-67.67q131-11.66 218.83-105.5Q813.33-347 813.33-480T725.5-706.83q-87.83-93.84-218.83-105.5v664.66Z" />
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-content"><a class="dropdown-item"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                        class="icon icon-tabler icons-tabler-filled icon-tabler-sun">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path
+                                            d="M12 19a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z" />
+                                        <path
+                                            d="M18.313 16.91l.094 .083l.7 .7a1 1 0 0 1 -1.32 1.497l-.094 -.083l-.7 -.7a1 1 0 0 1 1.218 -1.567l.102 .07z" />
+                                        <path
+                                            d="M7.007 16.993a1 1 0 0 1 .083 1.32l-.083 .094l-.7 .7a1 1 0 0 1 -1.497 -1.32l.083 -.094l.7 -.7a1 1 0 0 1 1.414 0z" />
+                                        <path
+                                            d="M4 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" />
+                                        <path
+                                            d="M21 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" />
+                                        <path
+                                            d="M6.213 4.81l.094 .083l.7 .7a1 1 0 0 1 -1.32 1.497l-.094 -.083l-.7 -.7a1 1 0 0 1 1.217 -1.567l.102 .07z" />
+                                        <path
+                                            d="M19.107 4.893a1 1 0 0 1 .083 1.32l-.083 .094l-.7 .7a1 1 0 0 1 -1.497 -1.32l.083 -.094l.7 -.7a1 1 0 0 1 1.414 0z" />
+                                        <path
+                                            d="M12 2a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z" />
+                                        <path
+                                            d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+                                    </svg>&nbsp;&nbsp;Light</a></li>
+                            <li class="dropdown-content"><a class="dropdown-item"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="icon icon-tabler icons-tabler-outline icon-tabler-moon-stars">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path
+                                            d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+                                        <path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2" />
+                                        <path d="M19 11h2m-1 -1v2" />
+                                    </svg>&nbsp;&nbsp;Dark</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <button class="btn btn-outline-secondary logout">Logout&nbsp;<svg
+                                xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill="#e8eaed">
+                                <path
+                                    d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z" />
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="message"></div>
+    <!-- profile offcanvas -->
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasRight"
+        aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h3 class="offcanvas-title" id="offcanvasRightLabel"><svg xmlns="http://www.w3.org/2000/svg" height="36px"
+                    viewBox="0 -960 960 960" width="36px" fill="#e8eaed">
+                    <path
+                        d="M226-262q59-42.33 121.33-65.5 62.34-23.17 132.67-23.17 70.33 0 133 23.17T734.67-262q41-49.67 59.83-103.67T813.33-480q0-141-96.16-237.17Q621-813.33 480-813.33t-237.17 96.16Q146.67-621 146.67-480q0 60.33 19.16 114.33Q185-311.67 226-262Zm253.88-184.67q-58.21 0-98.05-39.95Q342-526.58 342-584.79t39.96-98.04q39.95-39.84 98.16-39.84 58.21 0 98.05 39.96Q618-642.75 618-584.54t-39.96 98.04q-39.95 39.83-98.16 39.83ZM480.31-80q-82.64 0-155.64-31.5-73-31.5-127.34-85.83Q143-251.67 111.5-324.51T80-480.18q0-82.82 31.5-155.49 31.5-72.66 85.83-127Q251.67-817 324.51-848.5T480.18-880q82.82 0 155.49 31.5 72.66 31.5 127 85.83Q817-708.33 848.5-635.65 880-562.96 880-480.31q0 82.64-31.5 155.64-31.5 73-85.83 127.34Q708.33-143 635.65-111.5 562.96-80 480.31-80Zm-.31-66.67q54.33 0 105-15.83t97.67-52.17q-47-33.66-98-51.5Q533.67-284 480-284t-104.67 17.83q-51 17.84-98 51.5 47 36.34 97.67 52.17 50.67 15.83 105 15.83Zm0-366.66q31.33 0 51.33-20t20-51.34q0-31.33-20-51.33T480-656q-31.33 0-51.33 20t-20 51.33q0 31.34 20 51.34 20 20 51.33 20Zm0-71.34Zm0 369.34Z" />
+                </svg>&nbsp;Profile</h3>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <h5>Complete Profile</h5>
+            <!-- <div class="text-center">
+                <img 
+                  id="profile-img" 
+                  /*src="default-avatar.png"*/
+                  alt="Profile Picture" 
+                  class="rounded-circle" 
+                  width="150" 
+                  height="150"
+                />
+                <button id="upload-button" class="btn btn-secondary mt-3">Upload Photo</button>
+              </div>
+               -->
+
+            <!-- <script src="https://upload-widget.cloudinary.com/latest/global/all.js" type="text/javascript"></script>
+
+            <script type="text/javascript">
+                var myWidget = cloudinary.createUploadWidget({
+                    cloudName: 'dgxkomhv3',
+                    uploadPreset: 'profile_pictures'
+                }, (error, result) => {
+                    if (!error && result && result.event === "success") {
+                        console.log('Done! Here is the image info: ', result.info);
+                    }
+                }
+                )
+
+                document.getElementById("upload_widget").addEventListener("click", function () {
+                    myWidget.open();
+                }, false);
+            </script> -->
+            <form id="userForm" class="row">
+                <div class="col-md-6">
+                    <label for="autoSizingInput" class="form-label">Name</label>
+                    <input type="text" class="form-control" placeholder="Name" id="inputname" aria-label="name"
+                        required>
+                </div>
+                <div class="col-md-6">
+                    <label for="inputEmail4" class="form-label">Email</label>
+                    <input type="email" class="form-control" placeholder="Email" id="inputEmail4" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="inputCity" class="form-label">City</label>
+                    <input type="text" class="form-control" placeholder="City" id="inputCity" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="inputState" class="form-label">State</label>
+                    <select id="inputState" class="form-select" required>
+                        <option selected>Select State</option>
+                        <option>Andhra Pradesh</option>
+                        <option>Arunachal Pradesh</option>
+                        <option>Assam</option>
+                        <option>Bihar</option>
+                        <option>Chhattisgarh</option>
+                        <option>Goa</option>
+                        <option>Gujarat</option>
+                        <option>Haryana</option>
+                        <option>Himachal Pradesh</option>
+                        <option>Jharkhand</option>
+                        <option>Karnataka</option>
+                        <option>Kerala</option>
+                        <option>Madhya Pradesh</option>
+                        <option>Maharashtra</option>
+                        <option>Manipur</option>
+                        <option>Meghalaya</option>
+                        <option>Mizoram</option>
+                        <option>Nagaland</option>
+                        <option>Odisha</option>
+                        <option>Punjab</option>
+                        <option>Rajasthan</option>
+                        <option>Sikkim</option>
+                        <option>Tamil Nadu</option>
+                        <option>Telangana</option>
+                        <option>Tripura</option>
+                        <option>Uttar Pradesh</option>
+                        <option>Uttarakhand</option>
+                        <option>West Bengal</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-secondary col-md-6 my-3 mx-2">Save Details</button>
+            </form>
+            <!-- Profile View (After Saving) -->
+            <div id="profileDisplay" style="display: none;">
+                <h3>User Profile</h3><br>
+                <p><strong>Name:</strong> <span id="nameDisplay">Loading...</span></p>
+                <p><strong>Email:</strong> <span id="emailDisplay">Loading...</span></p>
+                <p><strong>City:</strong> <span id="cityDisplay">Loading...</span></p>
+                <p><strong>State:</strong> <span id="stateDisplay">Loading...</span></p>
+
+                <!-- Optionally, display profile picture -->
+                <!-- <img id="profilePhoto" src="default-avatar.png" alt="Profile Picture" /> -->
+            </div>
+        </div>
+    </div>
+
+    <button onclick="topFunction()" id="myBtn" title="Return to top"><svg xmlns="http://www.w3.org/2000/svg"
+        height="40px" viewBox="0 -960 960 960" width="40px" fill="#e8eaed">
+        <path
+            d="M448-242.67V-632L286.67-472.67 240-520l240.67-240.67L721.33-520l-46.66 46.67-160-160v390.66H448Z" />
+    </svg></button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+<!-- go to top button -->
+<script>
+    // Get the button
+    let mybutton = document.getElementById("myBtn");
+
+    // When the user scrolls down 1800px from the top of the document, show the button
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 1800 || document.documentElement.scrollTop > 1800) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+
+<!-- connecting to bundle.js -->
+<script src="/dist/bundle.js"></script>
+</body>
+
+</html>
