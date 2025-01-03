@@ -1,0 +1,853 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TypeRivals</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+    <!-- navbar css -->
+    <style>
+        .navbar {
+            width: 100%;
+            font-size: 1rem;
+            border-radius: 0px;
+        }
+
+        .navfont {
+            font-family: 'Ubuntu', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 25px;
+        }
+
+        .container-fluid {
+            /*height: 52px;*/
+            /*grid-template-columns: repeat(auto-fit, minmax(2px,1fr));*/
+            font-size: 1rem;
+        }
+
+        #but1 {
+            border-radius: 25px;
+            z-index: 4;
+            height: 36px;
+            text-align: center center;
+            font-size: 15px;
+            font-family: 'Ubuntu', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        #but2 {
+            border-radius: 25px;
+            margin-left: -40px;
+            margin-right: 4px;
+            height: 36px;
+            text-align: center center;
+            font-size: 15px;
+            font-family: 'Ubuntu', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        #but2:hover {
+            background-color: rgb(104, 87, 87);
+        }
+    </style>
+    <!-- text generation css
+    <style>
+        #output {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border-bottom: 1px solid #ccc;
+        }
+
+        #input-section {
+            padding: 10px;
+            background-color: #ffffff;
+            border-top: 1px solid #ccc;
+        }
+
+        .userinput {
+            width: 100%;
+            height: 60px;
+            padding: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .sendbtn {
+            margin-top: 10px;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .sendbtn:hover {
+            background-color: #0056b3;
+        }
+
+        .difficulty {
+            font-style: italic;
+            color: gray;
+            margin-left: 5px;
+        }
+    </style> -->
+    <!-- return to top -->
+    <style>
+        #myBtn {
+            /*width: 120px;*/
+            /*height: 50px;*/
+            display: none;
+            position: fixed;
+            bottom: 50px;
+            right: 30px;
+            z-index: 100;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: rgb(56, 50, 50);
+            color: white;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+        }
+
+        #myBtn:hover {
+            background-color: #555;
+
+        }
+    </style>
+    <!-- contest css -->
+    <style>
+        /* Container Styles */
+        .container1 {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #e6e2e2;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+        }
+
+        .dropd {
+            width: 100px;
+            padding: 4px;
+            border-radius: 4px;
+        }
+
+        .dropd:hover {
+            cursor: pointer;
+        }
+
+        #timer {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #3d3a3a;
+        }
+
+        #typingText {
+            font-size: 20px;
+            background: #e6e2e2;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            margin-left: 4px;
+            margin-right: 4px;
+        }
+
+        #userInput {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            border: 1px solid #000000;
+            border-radius: 4px;
+            margin: auto;
+        }
+
+        .no-copy {
+            user-select: none;
+            /* Disables text selection */
+            -webkit-user-select: none;
+            /* For Safari */
+            -ms-user-select: none;
+            /* For IE */
+            cursor: default;
+            /* Changes cursor to indicate non-interactive text */
+        }
+
+        .no-copy:active {
+            pointer-events: none;
+            /* Disables interaction when clicked */
+        }
+
+        /* Contest Settings */
+        #contestSettings {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #contestSettings label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        #contestSettings select,
+        #contestSettings button {
+            margin: 10px 0;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #contestSettings button {
+            background-color: #373837;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #contestSettings button:hover {
+            background-color: #000000;
+        }
+
+        /* Typing Container */
+        #typingContainer {
+            text-align: center;
+        }
+
+        /* Result Container */
+        #resultContainer {
+            text-align: center;
+        }
+
+        #resultContainer h2 {
+            margin-bottom: 20px;
+            color: #2d2f30;
+        }
+
+        #resultContainer p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        #resultContainer strong {
+            color: #333;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+
+            #typingText {
+                font-size: 16px;
+            }
+
+            #userInput {
+                font-size: 14px;
+            }
+        }
+
+        .restart {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #373837;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .restart:hover {
+            background-color: #000000;
+        }
+    </style>
+    <style>
+        .headline {
+            text-align: center;
+            font-family: 'Ubuntu', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    </style>
+    <!-- logout style -->
+    <style>
+        .logout {
+            border-radius: 10px;
+        }
+    </style>
+    <!-- result container -->
+    <style>
+        .resultcont {
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+            height: auto;
+            border: solid 0.4px #333;
+            border-radius: 5px;
+            box-shadow: 4px 4px 15px rgb(0, 0, 0, 0.8);
+            background-color: rgb(183, 219, 171);
+        }
+    </style>
+    <!-- error and success message -->
+    <style>
+        #message {
+            display: none;
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2000;
+            padding: 15px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            text-align: center;
+        }
+
+        #message.success {
+            background-color: #4caf50;
+            border: 1px solid #388e3c;
+        }
+
+        #message.error {
+            background-color: #f44336;
+            border: 1px solid #d32f2f;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-toggler navbar-collapse navbar-expand-sm navbar-expand-md navbar-expand-lg sticky-top bg-body-tertiary"
+        data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand navfont" href="#">TypeRivals</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mx-5 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/signuphome.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/startcontest.html">Start Contest</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/signedleader.html">Leaderboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signedblog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/signedcontactus.html">Contact Us</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mx-1 mb-lg-0">
+                    <li class="nav-item mx-2">
+                        <button class="btn btn-outline-secondary" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" title="Profile"><svg
+                                xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"
+                                fill="#e8eaed">
+                                <path
+                                    d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm246-164q-59 0-99.5-40.5T340-580q0-59 40.5-99.5T480-720q59 0 99.5 40.5T620-580q0 59-40.5 99.5T480-440Zm0 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q53 0 100-15.5t86-44.5q-39-29-86-44.5T480-280q-53 0-100 15.5T294-220q39 29 86 44.5T480-160Zm0-360q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm0-60Zm0 360Z" />
+                            </svg></button>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" title="Theme">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px"
+                                fill="#e8eaed">
+                                <path
+                                    d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm26.67-67.67q131-11.66 218.83-105.5Q813.33-347 813.33-480T725.5-706.83q-87.83-93.84-218.83-105.5v664.66Z" />
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-content"><a class="dropdown-item"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                        class="icon icon-tabler icons-tabler-filled icon-tabler-sun">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path
+                                            d="M12 19a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z" />
+                                        <path
+                                            d="M18.313 16.91l.094 .083l.7 .7a1 1 0 0 1 -1.32 1.497l-.094 -.083l-.7 -.7a1 1 0 0 1 1.218 -1.567l.102 .07z" />
+                                        <path
+                                            d="M7.007 16.993a1 1 0 0 1 .083 1.32l-.083 .094l-.7 .7a1 1 0 0 1 -1.497 -1.32l.083 -.094l.7 -.7a1 1 0 0 1 1.414 0z" />
+                                        <path
+                                            d="M4 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" />
+                                        <path
+                                            d="M21 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" />
+                                        <path
+                                            d="M6.213 4.81l.094 .083l.7 .7a1 1 0 0 1 -1.32 1.497l-.094 -.083l-.7 -.7a1 1 0 0 1 1.217 -1.567l.102 .07z" />
+                                        <path
+                                            d="M19.107 4.893a1 1 0 0 1 .083 1.32l-.083 .094l-.7 .7a1 1 0 0 1 -1.497 -1.32l.083 -.094l.7 -.7a1 1 0 0 1 1.414 0z" />
+                                        <path
+                                            d="M12 2a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z" />
+                                        <path
+                                            d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+                                    </svg>&nbsp;&nbsp;Light</a></li>
+                            <li class="dropdown-content"><a class="dropdown-item"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="icon icon-tabler icons-tabler-outline icon-tabler-moon-stars">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path
+                                            d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+                                        <path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2" />
+                                        <path d="M19 11h2m-1 -1v2" />
+                                    </svg>&nbsp;&nbsp;Dark</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <button class="btn btn-outline-secondary logout">Logout&nbsp;<svg
+                                xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill="#e8eaed">
+                                <path
+                                    d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z" />
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="message"></div>
+    <!-- profile offcanvas -->
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasRight"
+        aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h3 class="offcanvas-title" id="offcanvasRightLabel"><svg xmlns="http://www.w3.org/2000/svg" height="36px"
+                    viewBox="0 -960 960 960" width="36px" fill="#e8eaed">
+                    <path
+                        d="M226-262q59-42.33 121.33-65.5 62.34-23.17 132.67-23.17 70.33 0 133 23.17T734.67-262q41-49.67 59.83-103.67T813.33-480q0-141-96.16-237.17Q621-813.33 480-813.33t-237.17 96.16Q146.67-621 146.67-480q0 60.33 19.16 114.33Q185-311.67 226-262Zm253.88-184.67q-58.21 0-98.05-39.95Q342-526.58 342-584.79t39.96-98.04q39.95-39.84 98.16-39.84 58.21 0 98.05 39.96Q618-642.75 618-584.54t-39.96 98.04q-39.95 39.83-98.16 39.83ZM480.31-80q-82.64 0-155.64-31.5-73-31.5-127.34-85.83Q143-251.67 111.5-324.51T80-480.18q0-82.82 31.5-155.49 31.5-72.66 85.83-127Q251.67-817 324.51-848.5T480.18-880q82.82 0 155.49 31.5 72.66 31.5 127 85.83Q817-708.33 848.5-635.65 880-562.96 880-480.31q0 82.64-31.5 155.64-31.5 73-85.83 127.34Q708.33-143 635.65-111.5 562.96-80 480.31-80Zm-.31-66.67q54.33 0 105-15.83t97.67-52.17q-47-33.66-98-51.5Q533.67-284 480-284t-104.67 17.83q-51 17.84-98 51.5 47 36.34 97.67 52.17 50.67 15.83 105 15.83Zm0-366.66q31.33 0 51.33-20t20-51.34q0-31.33-20-51.33T480-656q-31.33 0-51.33 20t-20 51.33q0 31.34 20 51.34 20 20 51.33 20Zm0-71.34Zm0 369.34Z" />
+                </svg>&nbsp;Profile</h3>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <h5>Complete Profile</h5>
+            <!-- <div class="text-center">
+                <img 
+                  id="profile-img" 
+                  /*src="default-avatar.png"*/
+                  alt="Profile Picture" 
+                  class="rounded-circle" 
+                  width="150" 
+                  height="150"
+                />
+                <button id="upload-button" class="btn btn-secondary mt-3">Upload Photo</button>
+              </div>
+               -->
+
+            <!-- <script src="https://upload-widget.cloudinary.com/latest/global/all.js" type="text/javascript"></script>
+
+            <script type="text/javascript">
+                var myWidget = cloudinary.createUploadWidget({
+                    cloudName: 'dgxkomhv3',
+                    uploadPreset: 'profile_pictures'
+                }, (error, result) => {
+                    if (!error && result && result.event === "success") {
+                        console.log('Done! Here is the image info: ', result.info);
+                    }
+                }
+                )
+
+                document.getElementById("upload_widget").addEventListener("click", function () {
+                    myWidget.open();
+                }, false);
+            </script> -->
+            <form id="userForm" class="row">
+                <div class="col-md-6">
+                    <label for="autoSizingInput" class="form-label">Name</label>
+                    <input type="text" class="form-control" placeholder="Name" id="inputname" aria-label="name"
+                        required>
+                </div>
+                <div class="col-md-6">
+                    <label for="inputEmail4" class="form-label">Email</label>
+                    <input type="email" class="form-control" placeholder="Email" id="inputEmail4" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="inputCity" class="form-label">City</label>
+                    <input type="text" class="form-control" placeholder="City" id="inputCity" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="inputState" class="form-label">State</label>
+                    <select id="inputState" class="form-select" required>
+                        <option selected>Select State</option>
+                        <option>Andhra Pradesh</option>
+                        <option>Arunachal Pradesh</option>
+                        <option>Assam</option>
+                        <option>Bihar</option>
+                        <option>Chhattisgarh</option>
+                        <option>Goa</option>
+                        <option>Gujarat</option>
+                        <option>Haryana</option>
+                        <option>Himachal Pradesh</option>
+                        <option>Jharkhand</option>
+                        <option>Karnataka</option>
+                        <option>Kerala</option>
+                        <option>Madhya Pradesh</option>
+                        <option>Maharashtra</option>
+                        <option>Manipur</option>
+                        <option>Meghalaya</option>
+                        <option>Mizoram</option>
+                        <option>Nagaland</option>
+                        <option>Odisha</option>
+                        <option>Punjab</option>
+                        <option>Rajasthan</option>
+                        <option>Sikkim</option>
+                        <option>Tamil Nadu</option>
+                        <option>Telangana</option>
+                        <option>Tripura</option>
+                        <option>Uttar Pradesh</option>
+                        <option>Uttarakhand</option>
+                        <option>West Bengal</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-secondary col-md-6 my-3 mx-2">Save Details</button>
+            </form>
+            <!-- Profile View (After Saving) -->
+            <div id="profileDisplay" style="display: none;">
+                <h3>User Profile</h3><br>
+                <p><strong>Name:</strong> <span id="nameDisplay">Loading...</span></p>
+                <p><strong>Email:</strong> <span id="emailDisplay">Loading...</span></p>
+                <p><strong>City:</strong> <span id="cityDisplay">Loading...</span></p>
+                <p><strong>State:</strong> <span id="stateDisplay">Loading...</span></p>
+
+                <!-- Optionally, display profile picture -->
+                <!-- <img id="profilePhoto" src="default-avatar.png" alt="Profile Picture" /> -->
+            </div>
+        </div>
+    </div>
+    <div class="headline">
+        <h4><br>Start Testing your Typing Skills</h4>
+    </div>
+    <div id="contestSettings" class="container1">
+        <div class="mx-2 dropdown-container">
+            <label for="duration">Select Duration:&nbsp;&nbsp;</label>
+            <select id="duration" class="dropd" name="duration">
+                <option selected>Select</option>
+                <option value="30">30 seconds</option>
+                <option value="60">1 minute</option>
+                <option value="120">2 minutes</option>
+            </select>
+        </div>
+
+        <div class="mx-2 dropdown-container">
+            <label for="difficulty">Select Difficulty:&nbsp;&nbsp;</label>
+            <select id="difficulty" class="dropd" name="difficulty">
+                <option selected>Select</option>
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+        </div>
+
+        <button id="startContest" class="start-button mx-2">Start Contest</button>
+    </div>
+    <div class="timer" id="timer"></div>
+    <div id="typingContainer" class="typing-container mx-2 my-2" style="display: none;">
+        <p id="typingText" class="p-3 no-copy"></p>
+        <textarea id="userInput" class="form-control mt-3 mx-2" placeholder="Start typing here..."></textarea>
+    </div>
+    <div id="resultContainer" style="display: none;"></div>
+
+
+    <!-- no-copy script -->
+    <script>
+        const typingTextElement = document.getElementById('typingText');
+
+        // Prevent right-click on the predefined text
+        typingTextElement.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+        });
+
+    </script>
+
+    <!-- results script -->
+    <script>
+        function calculateResults(predefinedText, userInput, durationInSeconds) {
+            const predefinedWords = predefinedText.split(" ");
+            const userWords = userInput.trim().split(" ");
+            const totalKeystrokes = userInput.length; // Total characters typed by the user
+            const wordsTyped = totalKeystrokes / 5; // Convert keystrokes to words (5 keystrokes = 1 word)
+            const durationInMinutes = durationInSeconds / 60; // Convert duration to minutes
+            const totalWordsTyped = userWords.length;
+
+            let correctWords = 0;
+            const mistakes = [];
+
+            // Compare user input with predefined text
+            userWords.forEach((word, index) => {
+                if (word === predefinedWords[index]) {
+                    correctWords++;
+                } else {
+                    mistakes.push({
+                        expected: predefinedWords[index] || "(No word)",
+                        entered: word || "(No word)",
+                    });
+                }
+            });
+
+            const accuracy = (correctWords / totalWordsTyped) * 100 || 0; // Avoid NaN
+            const wordsPerMinute = wordsTyped / durationInMinutes; // Calculate WPM
+            const totalMistakes = mistakes.length;
+
+            return { wordsPerMinute, accuracy, totalMistakes, mistakes };
+        }
+
+        function endContest(predefinedText) {
+            const userInput = document.getElementById("userInput").value;
+            const duration = parseInt(document.getElementById("duration").value);
+
+            const { wordsPerMinute, accuracy, totalMistakes, mistakes } = calculateResults(predefinedText, userInput, duration);
+
+            const resultContainer = document.getElementById("resultContainer");
+            resultContainer.innerHTML = `
+            <div class="resultcont"><br>
+            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#e8eaed"><path d="M292-120v-66.67h154.67v-140q-52.34-11-93.17-44.83T296-456q-74.33-8.33-125.17-61.83Q120-571.33 120-645.33V-688q0-27.67 19.5-47.17t47.17-19.5h96V-840h394.66v85.33h96q27.67 0 47.17 19.5T840-688v42.67q0 74-50.83 127.5Q738.33-464.33 664-456q-16.67 50.67-57.5 84.5t-93.17 44.83v140H668V-120H292Zm-9.33-406.67V-688h-96v42.67q0 42.66 27 75.16t69 43.5ZM480-390q54.67 0 92.67-38.33 38-38.34 38-93v-252H349.33v252q0 54.66 38 93Q425.33-390 480-390Zm197.33-136.67q42-11 69-43.5t27-75.16V-688h-96v161.33ZM480-582Z"/></svg>
+            <h2>Results</h2><br>
+            <p>Typing Speed: <strong>${wordsPerMinute.toFixed(2)} WPM</strong></p>
+            <p>Accuracy: <strong>${accuracy.toFixed(2)}%</strong></p>
+            <p>Total Mistakes: <strong>${totalMistakes}</strong></p><br>
+            <h3>Mistake Mapper</h3><br>
+            <div>
+             ${totalMistakes === 0
+                    ? '<p class="text-success">Excellent! You made 0 mistakes.</p>'
+                    : mistakes
+                        .map(
+                            (mistake) =>
+                                `<p><strong>Expected:</strong> "${mistake.expected}" | <strong>Entered:</strong> "${mistake.entered}"</p>`
+                        )
+                        .join("")
+                }
+            </div>
+            <button class="my-2 restart" onclick="location.reload()">Restart</button>
+            </div>
+          `;
+
+            resultContainer.style.display = "block";
+            document.getElementById("typingContainer").style.display = "none";
+        }
+
+        function startTimer(duration, predefinedText) {
+            const timerElement = document.getElementById("timer");
+            let timeRemaining = duration;
+
+            const timerInterval = setInterval(() => {
+                timerElement.textContent = `Time Remaining: ${timeRemaining} seconds`;
+
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    timerElement.textContent = "Time's up!";
+                    endContest(predefinedText);
+                }
+
+                timeRemaining--;
+            }, 1000);
+        }
+
+        document.getElementById("startContest").addEventListener("click", () => {
+            const duration = parseInt(document.getElementById("duration").value);
+            const difficulty = document.getElementById("difficulty").value;
+            const predefinedTexts = {
+                easy: `Imagine the day is winding down, the last rays of sunlight are painting the sky with hues of orange and purple, and you're finally settling onto your favorite spot on the sofa. There's a satisfying quiet that has fallen, a welcome contrast to the hustle and bustle of the day. It's a moment to simply breathe and let go of the accumulated stress, a little personal sanctuary carved out from the world.
+
+            The ambiance is just right. Maybe you've lit a candle with a comforting scent – perhaps vanilla or lavender – or maybe you prefer the soft glow of a lamp. A warm drink steams gently in your hands, a mug of herbal tea or perhaps a rich hot chocolate. The weight of the mug is a grounding presence, a tactile reminder to slow down and be present. The room feels cozy and inviting, like a warm embrace.
+
+            With all the distractions of the outside world fading, it’s a perfect time to engage in simple pleasures. Perhaps you open a book you've been eager to read, or put on some soft, instrumental music. Maybe you just sit in quiet contemplation, letting your thoughts drift gently by. It's a chance to reconnect with yourself, to listen to the inner voice that often gets drowned out during the day. There's a certain magic in these unhurried moments, a feeling of contentment that comes from slowing down and appreciating the small things.
+
+            This is also a great time to indulge in self-care. Maybe you treat yourself to a face mask or a warm bath infused with essential oils. The gentle act of caring for your body can be incredibly soothing for the mind. It’s a reminder that you deserve kindness and attention, that taking care of yourself is not selfish but essential. It’s about nurturing your wellbeing and recharging your inner batteries.
+
+            There’s a unique sense of freedom in these quiet evenings. You're not obligated to be anywhere or do anything. You can simply exist in the present moment, enjoying the simple comfort of being home. It’s a beautiful reminder that happiness can be found in the most ordinary of moments, in the peacefulness of a quiet evening. It’s a practice of finding joy in the everyday, rather than always seeking it in the extraordinary.`,
+                medium: `The hum of the refrigerator was a constant, almost unnoticed companion in the quiet kitchen. Sunlight, filtered through the sheer curtains, cast elongated shadows across the checkered linoleum floor, highlighting the dust motes dancing in the air. A half-eaten apple sat on the counter, its exposed flesh browning slightly, a testament to a rushed breakfast. Outside, the faint sounds of a lawnmower and children's laughter drifted in, painting a picture of a world that continued its rhythm regardless of the stillness inside. It was a moment suspended, a brief pause before the day's demands would begin to tug at its edges.
+
+            Consider the intricate dance of neurons firing within our brains, an unseen symphony of electrical and chemical signals that give rise to our thoughts, emotions, and actions. It's a biological marvel, a complex network that scientists are still only beginning to unravel. Each synapse, a microscopic gap between nerve cells, is a point of communication, a place where information is transferred, modified, and stored. This constant exchange, happening billions of times a second, allows us to experience the world, to learn, to create, and to remember. It's a testament to the power and beauty of the human body, a world contained within each of us.
+
+            The act of reading, often seen as a solitary pursuit, is actually a powerful act of connection. We engage with the minds of authors, past and present, allowing their perspectives, stories, and ideas to shape our own. Through words, we can travel to distant lands, explore different cultures, and experience lives vastly different from our own. We build empathy, deepen our understanding of the human condition, and expand the boundaries of our own imagination. Each page turned is a step further into a world crafted by another, a journey shared across time and space.
+
+            The gentle lapping of waves against the shore has a hypnotic quality, a timeless rhythm that soothes and calms. The vast expanse of the ocean, stretching out to the horizon, inspires both awe and a sense of our own smallness. It is a world teeming with life, from the microscopic plankton to the majestic whales, all interconnected in a delicate balance. The salty air invigorates the senses, and the sound of seagulls overhead creates a melody unique to the coast. There is a quiet power in the ocean, a reminder of the forces of nature that shape our world.`,
+
+                hard: `The intricate dance of photons, bouncing and refracting through the multifaceted layers of a dragonfly's compound eye, is a marvel of evolutionary engineering. Each ommatidium, a tiny individual lens unit, contributes to a mosaic image, allowing the dragonfly to perceive a nearly 360-degree field of vision with exceptional motion detection. This capability is not merely advantageous; it’s fundamental to its predatory lifestyle, enabling it to intercept its prey with incredible accuracy. The subtle interplay of light and dark, the minute fluctuations in movement, all are processed at lightning speed by its complex neural network, converting the visual information into a precise flight path. The result is a hunting prowess that places the dragonfly among the most efficient aerial predators in the natural world, a testament to the power of adaptation and the sheer complexity of even the most seemingly simple biological systems.
+
+            The geopolitical chessboard is constantly shifting, each nation a piece with its own unique agenda, its own strategic objectives, and its own deeply ingrained cultural narratives. Alliances are forged and fractured, trade agreements are signed and renegotiated, and the shadow of conflict looms ever-present. Navigating this intricate web of interconnected interests requires a profound understanding of history, economics, and international law, a delicate balancing act between self-interest and global cooperation. The rise of new economic powers, the challenges posed by climate change, the rapid advancements in technology - all these factors add layers of complexity to an already multifaceted domain. The art of diplomacy, the ability to find common ground in the face of seemingly irreconcilable differences, remains a vital necessity in an increasingly volatile and interdependent world.
+
+            The act of creation, be it in the form of a painting, a musical composition, or a meticulously crafted piece of code, is a deeply human endeavor. It’s a process that demands not only technical skill but also a capacity for imagination, a willingness to explore the depths of one's own psyche, and the courage to expose one's vulnerabilities. There’s an alchemy involved in transforming an abstract concept into a tangible reality, a transformation that often involves moments of profound inspiration followed by periods of intense struggle and self-doubt. It’s in these moments of uncertainty, in these challenges to overcome perceived limitations, that the true essence of the creative act resides. It's the pushing of boundaries, the willingness to fail and to try again, that allows for the emergence of something truly unique and meaningful.`,
+            };
+
+            const selectedText = predefinedTexts[difficulty];
+
+            // Hide contest settings and show typing container
+            document.getElementById("contestSettings").style.display = "none";
+            document.getElementById("typingContainer").style.display = "block";
+            document.getElementById("typingText").textContent = selectedText;
+
+            startTimer(duration, selectedText);
+        });
+    </script>
+
+
+    <!-- Section to display generated text
+    <div id="output" style="white-space: pre-wrap; border: 1px solid #ccc; padding: 10px; margin-top: 10px;"></div>
+    <button onclick="fetchGeneratedText()">Generate Text</button>
+
+    <script>
+        async function fetchGeneratedText() {
+            const outputDiv = document.getElementById('output');
+            outputDiv.textContent = 'Generating...';
+
+            try {
+                const response = await fetch('http://localhost:3000/generate');
+                const data = await response.json();
+
+                if (data.text) {
+                    outputDiv.textContent = data.text;
+                } else {
+                    outputDiv.textContent = 'No text generated.';
+                }
+            } catch (error) {
+                outputDiv.textContent = 'Error: ' + error.message;
+            }
+        }
+    </script> -->
+
+
+    <!-- Section for user input
+    <div id="input-section">
+        <textarea id="user-input" class="userinput" placeholder="Type your message here..."></textarea>
+        <button class="sendbtn" onclick="handleInput()">Send</button>
+    </div>
+
+    <!-- <script>
+    async function handleInput() {
+      const userInput = document.getElementById('user-input').value;
+      if (userInput.trim() !== '') {
+        const outputDiv = document.getElementById('output');
+
+        // Display user input
+        const userMessage = document.createElement('p');
+        userMessage.textContent = `You: ${userInput}`;
+        outputDiv.appendChild(userMessage);
+
+        // Clear input field
+        document.getElementById('user-input').value = '';
+
+        // Fetch generated text and difficulty
+        const { generatedText, difficulty } = await fetchGeneratedResponse(userInput);
+
+        // Display generated text
+        const generatedMessage = document.createElement('p');
+        generatedMessage.innerHTML = `Generated: ${generatedText} <span class="difficulty">(Difficulty: ${difficulty})</span>`;
+        outputDiv.appendChild(generatedMessage);
+
+        // Scroll to bottom
+        outputDiv.scrollTop = outputDiv.scrollHeight;
+      }
+    }
+
+    // Simulate generating text with advanced difficulty analysis
+    async function fetchGeneratedResponse(userInput) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          // Example response
+          const generatedText = `This response explains "${userInput}" in detail. The text includes advanced vocabulary and syntactic structure to demonstrate a harder difficulty.`;
+
+          // Calculate difficulty using readability score
+          const difficulty = calculateDifficulty(generatedText);
+
+          resolve({ generatedText, difficulty });
+        }, 1000); // Simulate delay
+      });
+    }
+
+    // Advanced difficulty calculation based on readability score
+    function calculateDifficulty(text) {
+      const wordCount = text.split(/\s+/).length;
+      const sentenceCount = text.split(/[.!?]+/).length - 1; // Count sentences
+      const syllableCount = text.match(/[aeiouy]+/gi)?.length || 0; // Count syllables (basic estimate)
+
+      // Flesch-Kincaid Readability Formula
+      const fleschScore = (
+        206.835 -
+        (1.015 * (wordCount / sentenceCount)) -
+        (84.6 * (syllableCount / wordCount))
+      );
+
+      // Determine difficulty based on score
+      if (fleschScore >= 90) return 'Easy'; // Very easy
+      if (fleschScore >= 60) return 'Medium'; // Moderate difficulty
+      return 'Hard'; // Challenging
+    }
+  </script> -->
+    <!-- <script>
+    const GEMINI_API_URL = 'https://api.gemini.com/v1';
+
+    async function getTicker() {
+    try {
+    const response = await fetch(`${GEMINI_API_URL}/pubticker/btcusd`);
+    const data = await response.json();
+    document.getElementById('price').innerText = `BTC/USD: $${data.last}`;
+    } catch (error) {
+    console.error('Error fetching data from Gemini API:', error);
+    document.getElementById('price').innerText = 'Error loading data';
+    }
+    }
+
+    // Call the function
+    getTicker();
+    </script> -->
+    <button onclick="topFunction()" id="myBtn" title="Return to top"><svg xmlns="http://www.w3.org/2000/svg"
+            height="40px" viewBox="0 -960 960 960" width="40px" fill="#e8eaed">
+            <path
+                d="M448-242.67V-632L286.67-472.67 240-520l240.67-240.67L721.33-520l-46.66 46.67-160-160v390.66H448Z" />
+        </svg></button>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        </script>
+    <!-- go to top button -->
+    <script>
+        // Get the button
+        let mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 1800px from the top of the document, show the button
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 1800 || document.documentElement.scrollTop > 1800) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+    <!-- connecting to bundle.js -->
+    <script src="/dist/bundle.js"></script>
+</body>
+
+</html>

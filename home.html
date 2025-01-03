@@ -1,0 +1,1012 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TypeRivals</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+    <!-- navbar css -->
+    <style>
+        .navbar {
+            width: 100%;
+            font-size: 1rem;
+            border-radius: 0px;
+        }
+
+        .navfont {
+            font-family: 'Ubuntu', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 25px;
+        }
+
+        .container-fluid {
+            /*height: 52px;*/
+            /*grid-template-columns: repeat(auto-fit, minmax(2px,1fr));*/
+            font-size: 1rem;
+        }
+
+        #but1 {
+            border-radius: 25px;
+            z-index: 100;
+            height: 36px;
+            text-align: center center;
+            font-size: 15px;
+            font-family: 'Ubuntu', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        #but2 {
+            border-radius: 25px;
+            margin-left: -40px;
+            margin-right: 4px;
+            height: 36px;
+            text-align: center center;
+            font-size: 15px;
+            font-family: 'Ubuntu', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        #but2:hover {
+            background-color: rgb(104, 87, 87);
+        }
+    </style>
+    <!-- container1 css -->
+    <style>
+        .container1 {
+            font-family: 'Ubuntu', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-align: center;
+            border: black solid;
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 450px;
+            padding: 2px;
+            background-image: url('Screenshot 2024-12-19 203138.png');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-position: center;
+        }
+
+        .maintext {
+            text-decoration-color: rgb(35, 32, 32);
+            position: relative;
+            font-size: 45px;
+            z-index: 4;
+        }
+
+        .text1 {
+            text-decoration-color: rgb(35, 32, 32);
+            position: relative;
+            font-size: 30px;
+            z-index: 4;
+        }
+
+        @media (max-width: 810px) {
+            .maintext {
+                font-size: 30px;
+            }
+
+            .text1 {
+                font-size: 20px;
+            }
+        }
+
+        @media (min-width: 1350px) {
+            .container1 {
+                height: 500px;
+            }
+        }
+
+        @media (min-width: 1100px) and (max-width: 1350px) {
+            .container1 {
+                height: 400px;
+            }
+        }
+
+        @media (min-width: 1000px) and (max-width: 1100px) {
+            .container1 {
+                height: 350px;
+            }
+        }
+
+        @media (min-width: 800px) and (max-width: 1000px) {
+            .container1 {
+                height: 300px;
+            }
+        }
+
+        @media only screen and (max-width: 800px) {
+            .container1 {
+                height: 175px;
+            }
+        }
+
+        #myBtn {
+            /*width: 120px;*/
+            /*height: 50px;*/
+            display: none;
+            position: fixed;
+            bottom: 50px;
+            right: 30px;
+            z-index: 100;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: rgb(56, 50, 50);
+            color: white;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+        }
+
+        #myBtn:hover {
+            background-color: #555;
+
+        }
+    </style>
+    <!-- card css -->
+    <style>
+        .card {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .card:hover {
+            box-shadow: 5px 5px 10px black;
+        }
+
+        .dropbtncard1 {
+            background-color: #373937;
+            color: white;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdownCARD1 {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-contentcard1 {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 199px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-contentcard1 a {
+            color: black;
+            padding: 8px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-contentcard1 a:hover {
+            background-color: #c1afaf
+        }
+
+        .dropdownCARD1:hover .dropdown-contentcard1 {
+            display: block;
+        }
+
+        .dropdownCARD1:hover .dropbtncard1 {
+            background-color: #1e1f1e;
+        }
+
+        .btncard1 {
+            background-color: #373937;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btncard1:hover {
+            background-color: #1e1f1e;
+        }
+
+        #lead {
+            color: white;
+            text-decoration: none;
+        }
+
+        #blog {
+            color: white;
+            text-decoration: none;
+        }
+
+        .contest {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+    <!-- Sign-Up modal css -->
+    <style>
+        .sign {
+            font-family: 'Ubuntu', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        /* The Modal (background) */
+        .modal1 {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1000;
+            /* Sit on top */
+            padding-top: 100px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.7);
+            /* Black w/ opacity */
+        }
+
+
+        /* Modal Content */
+        .modal1-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0px;
+            border: 1px solid #888;
+            border-radius: 5px;
+            width: 40%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.5s;
+            animation-name: animatetop;
+            animation-duration: 0.5s
+        }
+
+        /* Media query for mobile screens */
+        @media only screen and (max-width: 550px) {
+            .modal1-content {
+                width: 100%;
+                /* Full width for mobile screens */
+            }
+        }
+
+        /* Add Animation */
+        @-webkit-keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+
+            to {
+                top: 0;
+                opacity: 1
+            }
+        }
+
+        @keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+
+            to {
+                top: 0;
+                opacity: 1
+            }
+        }
+
+        /* The Close Button */
+        .close1 {
+            color: white;
+            float: right;
+            font-size: 38px;
+        }
+
+        .close1:hover,
+        .close1:focus {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal1-header {
+            border-radius: 5px;
+            padding: 10px 16px;
+            background-color: rgb(130, 112, 112);
+            color: white;
+        }
+
+        .modbody {
+            padding: 2px 16px;
+        }
+
+        .modal1-footer {
+            border-radius: 5px;
+            padding: 2px 16px;
+            background-color: rgb(130, 112, 112);
+        }
+    </style>
+    <!-- log modal css -->
+    <style>
+        .log {
+            font-family: 'Ubuntu', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        /* The Modal (background) */
+        .modal2 {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1000;
+            /* Sit on top */
+            padding-top: 100px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.7);
+            /* Black w/ opacity */
+        }
+
+
+        /* Modal Content */
+        .modal2-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0px;
+            border: 1px solid #888;
+            border-radius: 5px;
+            width: 40%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.5s;
+            animation-name: animatetop;
+            animation-duration: 0.5s
+        }
+
+        /* Media query for mobile screens */
+        @media only screen and (max-width: 550px) {
+            .modal2-content {
+                width: 100%;
+                /* Full width for mobile screens */
+            }
+        }
+
+        /* Add Animation */
+        @-webkit-keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+
+            to {
+                top: 0;
+                opacity: 1
+            }
+        }
+
+        @keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+
+            to {
+                top: 0;
+                opacity: 1
+            }
+        }
+
+        /* The Close Button */
+        .close2 {
+            color: white;
+            float: right;
+            font-size: 38px;
+        }
+
+        .close2:hover,
+        .close2:focus {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal2-header {
+            border-radius: 5px;
+            padding: 10px 16px;
+            background-color: rgb(130, 112, 112);
+            color: white;
+        }
+
+        .modal2-footer {
+            border-radius: 5px;
+            padding: 2px 16px;
+            background-color: rgb(130, 112, 112);
+        }
+    </style>
+   <!-- error and success message -->
+   <style>
+    #message {
+        display: none;
+        position: fixed;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2000;
+        padding: 15px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        max-width: 90%;
+        text-align: center;
+    }
+
+    #message.success {
+        display: block;
+        background-color: #4caf50;
+        border: 1px solid #388e3c;
+    }
+
+    #message.error {
+        display: block;
+        background-color: #f44336;
+        border: 1px solid #d32f2f;
+    }
+</style>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-toggler navbar-collapse navbar-expand-sm navbar-expand-md navbar-expand-lg sticky-top bg-body-tertiary"
+        data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand navfont" href="#">TypeRivals</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mx-5 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/leaderboard.html">Leaderboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/blog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/contactus.html">Contact Us</a>
+                    </li>
+                </ul>
+                <button id="but1" type="button" class="btn btn-secondary">Sign-Up</button>
+                <!-- The signup Modal -->
+                <div id="myModal1" class="modal1 sign">
+                    <!-- Modal content -->
+                    <div class="modal1-content">
+                        <div class="modal1-header">
+                            <span class="close1">&times;</span>
+                            <h2><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="icon icon-tabler icons-tabler-outline icon-tabler-user-circle">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                                    <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                                    <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+                                </svg>&nbsp;Sign-Up</h2>
+                        </div>
+                        <div class="modbody">
+                            <form class="signupform">
+                                <div class="mb-3 my-3">
+                                    <label for="inputEmail4" class="form-label text-black">Email address</label>
+                                    <input type="email" name="email" class="form-control" id="inputEmail4"
+                                        aria-describedby="emailHelp" placeholder="Email">
+                                    <div class="form-text text-black text-opacity-75">We'll never share
+                                        your email with anyone else.</div>
+                                </div>
+                                <div class="mb-3 my-3">
+                                    <label for="inputPassword4" class="form-label text-black">Create TypeRivals
+                                        Password</label>
+                                    <input type="password" name="password" class="form-control" id="inputPassword4"
+                                        placeholder="Password">
+                                    <div class="form-text text-black text-opacity-75">Password must be at least 8
+                                        characters long, include a letter, a number, and a special character (like,
+                                        example@12). </div>
+                                </div>
+                                <!-- <div class="mb-3 form-check">
+                                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                </div> -->
+                                <button type="submit" class="btn btn-secondary my-3">Continue</button>
+                            </form>
+                        </div>
+                        <!-- <div class="modal1-footer">
+                            <h3>Modal Footer</h3>
+                        </div> -->
+                    </div>
+                    <!-- modal script -->
+                    <script>
+                        // Get the modal
+                        var modal1 = document.getElementById("myModal1");
+
+                        // Get the button that opens the modal
+                        var btn = document.getElementById("but1");
+
+                        // Get the <span> element that closes the modal
+                        var span1 = document.getElementsByClassName("close1")[0];
+
+                        // When the user clicks the button, open the modal 
+                        btn.onclick = function () {
+                            modal1.style.display = "block";
+                        }
+
+                        // When the user clicks on <span> (x), close the modal
+                        span1.onclick = function () {
+                            modal1.style.display = "none";
+                        }
+
+                        // When the user clicks anywhere outside of the modal, close it
+                        window.onclick = function (event) {
+                            if (event.target == modal1) {
+                                modal1.style.display = "none";
+                            }
+                        }
+
+                    </script>
+                    <!-- signup script
+                    <script>
+                        //import {
+                        //    getAuth,
+                        //    createUserWithEmailAndPassword,
+                        //    signInWithEmailAndPassword
+                        //  } from "firebase/auth";
+                        //const auth = getAuth()
+                        // signing users up
+                        const signupform = document.querySelector('.signupform');
+                        const messageDiv = document.getElementById('message');
+
+                        // Function to show messages
+                        const showMessage = (message, type) => {
+                            messageDiv.textContent = message;
+                            messageDiv.className = type; // 'success' or 'error'
+                            messageDiv.style.display = 'block';
+                            setTimeout(() => {
+                                messageDiv.style.display = 'none'; // Hide after 3 seconds
+                            }, 3000);
+                        };
+
+                        // Password validation function
+                        const validatePassword = (password) => {
+                            const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+                            return passwordRegex.test(password);
+                        };
+
+                        signupform.addEventListener('submit', (e) => {
+                            e.preventDefault()
+                            const email = signupform.email.value
+                            const password = signupform.password.value
+                            // Validate password
+                            if (!validatePassword(password)) {
+                                showMessage(
+                                    'Password must be at least 8 characters long, include a letter, a number, and a special character.',
+                                    'error'
+                                );
+                                return;
+                            }
+
+                            createUserWithEmailAndPassword(auth, email, password)
+                                .then((cred) => {
+                                    console.log('user created:', cred.user)
+                                    showMessage('Signed up successfully!', 'success')
+                                    signupform.reset()
+                                    // Redirect to a different webpage
+                                    window.location.href = "signuphome.html";
+                                })
+                                .catch((err) => {
+                                    console.log(err.message)
+                                    // Handle specific Firebase errors
+                                    switch (err.code) {
+                                        case 'auth/email-already-in-use':
+                                            showMessage('This email is already in use. Please log in.', 'error');
+                                            break;
+                                        case 'auth/weak-password':
+                                            showMessage('Password is too weak. Please use a stronger password.', 'error');
+                                            break;
+                                        case 'auth/invalid-email':
+                                            showMessage('Invalid email format.', 'error');
+                                        default:
+                                            showMessage('An error occurred. Please try again.', 'error');
+                                    }
+                                })
+                        })
+                    </script> -->
+                </div>
+
+
+                <button id="but2" type="button"
+                    class="btn btn-outline-secondary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login</button>
+                <!-- The login Modal -->
+                <div id="myModal2" class="modal2 log">
+                    <!-- Modal content -->
+                    <div class="modal2-content">
+                        <div class="modal2-header">
+                            <span class="close2">&times;</span>
+                            <h2><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="icon icon-tabler icons-tabler-outline icon-tabler-user-circle">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                                    <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                                    <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+                                </svg>&nbsp;Login</h2>
+                        </div>
+                        <div class="modbody">
+                            <form class="loginform">
+                                <div class="mb-3 my-3">
+                                    <label for="inputEmail4" class="form-label text-black">Email address</label>
+                                    <input type="email" name="email" class="form-control" aria-describedby="emailHelp"
+                                        placeholder="Email">
+                                </div>
+                                <div class="mb-3 my-3">
+                                    <label for="inputPassword4" class="form-label text-black">TypeRivals
+                                        Password</label>
+                                    <input type="password" name="password" class="form-control" placeholder="Password">
+                                    <div class="form-text text-black text-opacity-75">Password must be at least 8
+                                        characters long, include a letter, a number, and a special character (like,
+                                        example@12). </div>
+                                </div>
+                                <button type="submit" class="btn btn-secondary my-3">login</button>
+                                <!-- <button class="logout btn btn-secondary">logout</button> -->
+                            </form>
+                        </div>
+                        <!-- <div class="modal2-footer">
+                            <h3>Modal Footer</h3>
+                        </div> -->
+                    </div>
+                    <!-- modal script -->
+                    <script>
+                        // Get the modal
+                        var modal2 = document.getElementById("myModal2");
+
+                        // Get the button that opens the modal
+                        var logbtn = document.getElementById("but2");
+
+                        // Get the <span> element that closes the modal
+                        var span2 = document.getElementsByClassName("close2")[0];
+
+                        // When the user clicks the button, open the modal 
+                        logbtn.onclick = function () {
+                            modal2.style.display = "block";
+                        }
+
+                        // When the user clicks on <span> (x), close the modal
+                        span2.onclick = function () {
+                            modal2.style.display = "none";
+                        }
+
+                        // When the user clicks anywhere outside of the modal, close it
+                        window.onclick = function (event) {
+                            if (event.target == modal2) {
+                                modal2.style.display = "none";
+                            }
+                        }
+
+                    </script>
+                    <!-- login script
+                    <script>
+                        const loginform = document.querySelector('.loginform')
+                        loginform.addEventListener('submit', (e) => {
+                            e.preventDefault()
+                            const email = loginform.email.value
+                            const password = loginform.password.value
+
+                            signInWithEmailAndPassword(auth, email, password)
+                                .then((cred) => {
+                                    console.log('user logged in', cred.user)
+                                    loginform.reset()
+                                    window.location.href = "signuphome.html";
+                                })
+                                .catch((err) => {
+                                    console.log(err.message)
+                                })
+                        })
+                    </script> -->
+                </div>
+                <ul class="navbar-nav mx-1 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" title="Theme">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px"
+                                fill="#e8eaed">
+                                <path
+                                    d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm26.67-67.67q131-11.66 218.83-105.5Q813.33-347 813.33-480T725.5-706.83q-87.83-93.84-218.83-105.5v664.66Z" />
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-content"><a class="dropdown-item"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                        class="icon icon-tabler icons-tabler-filled icon-tabler-sun">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path
+                                            d="M12 19a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z" />
+                                        <path
+                                            d="M18.313 16.91l.094 .083l.7 .7a1 1 0 0 1 -1.32 1.497l-.094 -.083l-.7 -.7a1 1 0 0 1 1.218 -1.567l.102 .07z" />
+                                        <path
+                                            d="M7.007 16.993a1 1 0 0 1 .083 1.32l-.083 .094l-.7 .7a1 1 0 0 1 -1.497 -1.32l.083 -.094l.7 -.7a1 1 0 0 1 1.414 0z" />
+                                        <path
+                                            d="M4 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" />
+                                        <path
+                                            d="M21 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" />
+                                        <path
+                                            d="M6.213 4.81l.094 .083l.7 .7a1 1 0 0 1 -1.32 1.497l-.094 -.083l-.7 -.7a1 1 0 0 1 1.217 -1.567l.102 .07z" />
+                                        <path
+                                            d="M19.107 4.893a1 1 0 0 1 .083 1.32l-.083 .094l-.7 .7a1 1 0 0 1 -1.497 -1.32l.083 -.094l.7 -.7a1 1 0 0 1 1.414 0z" />
+                                        <path
+                                            d="M12 2a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z" />
+                                        <path
+                                            d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+                                    </svg>&nbsp;&nbsp;Light</a></li>
+                            <li class="dropdown-content"><a class="dropdown-item"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="icon icon-tabler icons-tabler-outline icon-tabler-moon-stars">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path
+                                            d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+                                        <path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2" />
+                                        <path d="M19 11h2m-1 -1v2" />
+                                    </svg>&nbsp;&nbsp;Dark</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="message"></div>
+    <div class="container1">
+        <!-- <img id="img1" class="img-fluid" src="Screenshot 2024-12-11 032006.png" alt="no image"> -->
+        <div class="maintext"><br>Welcome to TypeRivals</div>
+        <div class="text1">Master the art of Typing</div>
+    </div>
+    
+    <!-- cards 1-7 -->
+    <!-- typing speed -->
+    <div class="card my-5 mb-3" style="max-width: 1000px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="Screenshot 2024-12-14 165806.png" class="img-fluid rounded-start" alt="no image">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h4 class="card-title"><br>TEST YOUR TYPING SPEED AND ACCURACY</h4>
+                    <p class="card-text">Unleash your typing potential with exciting challenges tailored for all skill
+                        levels. <br>Test your limits, beat the clock, and type your way to glory!<br>
+                    <div class="dropdownCARD1">
+                        <button class="dropbtncard1">Select Difficulty Level&thinsp;<svg
+                                xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill="#e8eaed">
+                                <path d="M480-360 280-560h400L480-360Z" />
+                            </svg></button>
+                        <div class="dropdown-contentcard1">
+                            <a href="#">Easy</a>
+                            <a href="#">Moderate</a>
+                            <a href="#">Tough</a>
+                        </div>
+                    </div>
+                    <div class="dropdownCARD1">
+                        <button class="dropbtncard1">Select Time Duration&thinsp;<svg xmlns="http://www.w3.org/2000/svg"
+                                height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                                <path d="M480-360 280-560h400L480-360Z" />
+                            </svg></button>
+                        <div class="dropdown-contentcard1">
+                            <a href="#">30 seconds</a>
+                            <a href="#">1 minute</a>
+                            <a href="#">2 minutes</a>
+                        </div>
+                    </div>
+                    <button class="btncard1"><a class="contest" href="/startcontest.html">Start Contest</a>&nbsp;<svg
+                            xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-badge-right">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M13 7h-6l4 5l-4 5h6l4 -5z" />
+                        </svg></button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- leaderboard -->
+    <div class="card my-5 mb-3" style="max-width: 1000px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="Screenshot 2024-12-14 170440.png" class="img-fluid rounded-start" alt="no image">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h4 class="card-title"><br>Leaderboard</h4>
+                    <p class="card-text">The leaderboard showcases top performers, ranking users based on their typing
+                        speed, accuracy, contest levels and their city. Outpace your rivals and claim the top
+                        spot!<br><br>
+                        <button class="btncard1"><a id="lead" href="/leaderboard.html">View Leaderboard&nbsp;<svg
+                                    xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                    width="24px" fill="#e8eaed">
+                                    <path
+                                        d="M480-160q75 0 127.5-52.5T660-340q0-75-52.5-127.5T480-520q-75 0-127.5 52.5T300-340q0 75 52.5 127.5T480-160ZM363-572q20-11 42.5-17.5T451-598L350-800H250l113 228Zm234 0 114-228H610l-85 170 19 38q14 4 27 8.5t26 11.5ZM256-208q-17-29-26.5-62.5T220-340q0-36 9.5-69.5T256-472q-42 14-69 49.5T160-340q0 47 27 82.5t69 49.5Zm448 0q42-14 69-49.5t27-82.5q0-47-27-82.5T704-472q17 29 26.5 62.5T740-340q0 36-9.5 69.5T704-208ZM480-80q-40 0-76.5-11.5T336-123q-9 2-18 2.5t-19 .5q-91 0-155-64T80-339q0-87 58-149t143-69L120-880h280l80 160 80-160h280L680-559q85 8 142.5 70T880-340q0 92-64 156t-156 64q-9 0-18.5-.5T623-123q-31 20-67 31.5T480-80Zm0-260ZM363-572 250-800l113 228Zm234 0 114-228-114 228ZM406-230l28-91-74-53h91l29-96 29 96h91l-74 53 28 91-74-56-74 56Z" />
+                                </svg></a></button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- mistake Mapper -->
+    <div class="card my-5 mb-3" style="max-width: 1000px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="Screenshot 2024-12-14 180337.png" class="img-fluid rounded-start" alt="no image">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h4 class="card-title"><br>Mistake Mapper</h4><br>
+                    <p class="card-text">Mistake Mapper analyzes your typing errors, highlighting incorrect words and
+                        mistypes. It provides detailed feedback to help you improve your accuracy.<br>Turn your mistakes
+                        into milestones—type smarter with Mistake Mapper!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- personalized profile -->
+    <div class="card my-5 mb-3" style="max-width: 1000px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="Screenshot 2024-12-14 223547.png" class="img-fluid rounded-start" alt="no image">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h4 class="card-title"><br>Personalised Profile</h4><br>
+                    <p class="card-text">Your personalized profile showcases your stats, contest history, and
+                        achievements, giving a complete overview of your typing journey.<br>Customize it with your
+                        profile picture, city, and track your progress in one place!"<br><br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- levels and badges -->
+    <div class="card my-5 mb-3" style="max-width: 1000px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="Screenshot 2024-12-14 225727.png" class="img-fluid rounded-start" alt="no image">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h4 class="card-title"><br>Achieve Your Typing Mastery</h4><br>
+                    <p class="card-text">Earn exciting badges as you type faster and more accurately! Progress through
+                        levels like Typing Master, Legendary, Speedo and Fast Fingered to showcase your skill.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- friends -->
+    <div class="card my-5 mb-3" style="max-width: 1000px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="Screenshot 2024-12-14 233130.png" class="img-fluid rounded-start" alt="no image">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h4 class="card-title"><br>Connect and Compete with Friends</h4><br>
+                    <p class="card-text">Add your friends, view their profiles, and challenge them to typing duels. Keep
+                        track of your friends’ contest history and cheer for their achievements!<br>
+                        Typing is better together—build your network on TypeRivals.<br><br>
+                        <button class="btncard1"><a id="lead" href="#">Add Friends&nbsp;<svg
+                                    xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960"
+                                    width="20px" fill="#e8eaed">
+                                    <path
+                                        d="M708-432v-84h-84v-72h84v-84h72v84h84v72h-84v84h-72Zm-324-48q-60 0-102-42t-42-102q0-60 42-102t102-42q60 0 102 42t42 102q0 60-42 102t-102 42ZM96-192v-92q0-25.78 12.5-47.39T143-366q55-32 116-49t125-17q64 0 125 17t116 49q22 13 34.5 34.61T672-284v92H96Zm72-72h432v-20q0-6.47-3.03-11.76-3.02-5.3-7.97-8.24-47-27-99-41.5T384-360q-54 0-106 14.5T179-304q-4.95 2.94-7.98 8.24Q168-290.47 168-284v20Zm216.21-288Q414-552 435-573.21t21-51Q456-654 434.79-675t-51-21Q354-696 333-674.79t-21 51Q312-594 333.21-573t51 21Zm-.21-73Zm0 361Z" />
+                                </svg></a></button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Blogging -->
+    <div class="card my-5 mb-3" style="max-width: 1000px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="Screenshot 2024-12-14 232111.png" class="img-fluid rounded-start" alt="no image">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h4 class="card-title"><br>Share Your Thoughts with the Community</h4><br>
+                    <p class="card-text">Got typing tips, tricks, or stories? Post them and inspire others!<br>
+                        Read blogs from fellow typists and exchange knowledge in our community.<br><br>
+                        <button class="btncard1"><a id="blog" href="/blog.html">Start Blogging</a><svg
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-badge-right">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M13 7h-6l4 5l-4 5h6l4 -5z" />
+                            </svg></button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button onclick="topFunction()" id="myBtn" title="Return to top"><svg xmlns="http://www.w3.org/2000/svg"
+            height="40px" viewBox="0 -960 960 960" width="40px" fill="#e8eaed">
+            <path
+                d="M448-242.67V-632L286.67-472.67 240-520l240.67-240.67L721.33-520l-46.66 46.67-160-160v390.66H448Z" />
+        </svg></button>
+    <footer class="bd-footer mt-5 text-bg-dark">
+        <div class="container py-md-4 px-md-4 text-body-light">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                <path
+                    d="M400-320h160q17 0 28.5-11.5T600-360v-80h-80v40h-80v-160h80v40h80v-80q0-17-11.5-28.5T560-640H400q-17 0-28.5 11.5T360-600v240q0 17 11.5 28.5T400-320Zm80 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+            </svg>
+            <h5><strong>TypeRivals</strong></h5>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        </script>
+    <!-- go to top button -->
+    <script>
+        // Get the button
+        let mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 1800px from the top of the document, show the button
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 1800 || document.documentElement.scrollTop > 1800) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+
+    <!-- connecting to bundle.js -->
+    <script src="/dist/bundle.js"></script>
+</body>
+
+</html>
